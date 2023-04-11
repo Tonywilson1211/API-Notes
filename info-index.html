@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div id="content"></div>
+
+
+    <script>
+        // fetch allows web requests to a server and manage what comes back
+        // they are based on a 'promise' = 
+        fetch("https://ci-swapi.herokuapp.com/api/") //fetch returns a promise so requires a 'then'
+            .then(response => response.json()) //.json or .text also returns a promise so another then is required
+            .then(data => displayData(data))         
+            .catch((e) => {
+                console.error("Error: ", e)// console error is used for more serious problems
+            })
+        
+            function displayData(data) {
+                document.getElementById("content").innerText = data.people;
+            }
+    </script>
+</body>
+</html>
